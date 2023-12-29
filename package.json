@@ -33,6 +33,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "fs": "^0.0.1-security",
     "museria": "https://github.com/metasound/museria.git",
     "sharp": "^0.33.1",
     "spreadable": "^0.2.28"

@@ -7,6 +7,10 @@ const loggerLevel = argv.loggerLevel || process.env.MUSERIA_LOGGER_LEVEL;
 const split = loggerLevel.split(',');
 const loggerLevelConsole = split[0];
 const loggerLevelFile = split[1] || loggerLevelConsole;
+const fs = require("fs");
+const key = fs.readFileSync('./storage.metasound.us/privkey.pem');
+const cert = fs.readFileSync('./storage.metasound.us/cert.pem');
+const ca = fs.readFileSync('./storage.metasound.us/fullchain.pem');
 
 module.exports = {
   face: argv.face || process.env.MUSERIA_FACE,
@@ -30,4 +34,11 @@ module.exports = {
     dataSize: argv.storageDataSize || process.env.MUSERIA_STORAGE_DATA_SIZE,
     tempSize: argv.storageTempSize || process.env.MUSERIA_STORAGE_TEMP_SIZE
   },
+  server: {
+    https: { 
+      key: key,
+      cert: cert,
+      ca: ca,
+    }
+  }
 }
