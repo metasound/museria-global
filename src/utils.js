@@ -1,1 +1,2 @@
-module.exports = Object.assign({}, require('museria/src/utils'));
+import utils from "museria-ms/src/utils";
+export default Object.assign({}, utils);

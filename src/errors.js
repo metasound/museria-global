@@ -1,1 +1,2 @@
-module.exports = Object.assign({}, require('museria/src/errors'));
+import errors from "museria-ms/src/errors";
+export default Object.assign({}, errors);

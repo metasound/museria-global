@@ -1,44 +1,52 @@
-const argv = require('yargs').argv;
-const dotenv = require('dotenv');
-const path = require('path');
-const faces = require('./faces');
+import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
+import * as dotenv from "dotenv";
+import path from "path";
+import fse from "fs-extra";
+import selfsigned  from 'selfsigned';
+
+const argv = yargs(hideBin(process.argv)).argv;
+const faces = JSON.parse(fse.readFileSync(new URL("./faces.json", import.meta.url)));
+const __dirname = new URL('.', import.meta.url).pathname;
 dotenv.config({ path: path.join(__dirname, '.env') });
 const loggerLevel = argv.loggerLevel || process.env.MUSERIA_LOGGER_LEVEL;
 const split = loggerLevel.split(',');
 const loggerLevelConsole = split[0];
 const loggerLevelFile = split[1] || loggerLevelConsole;
-const fs = require("fs");
-const key = fs.readFileSync('./storage.metasound.us/privkey.pem');
-const cert = fs.readFileSync('./storage.metasound.us/cert.pem');
-const ca = fs.readFileSync('./storage.metasound.us/fullchain.pem');
-
-module.exports = {
-  face: argv.face || process.env.MUSERIA_FACE,
-  port: argv.port || process.env.MUSERIA_PORT,
-  initialNetworkAddress: argv.initialNetworkAddress || process.env.MUSERIA_INITIAL_NETWORK_ADDRESS || faces,
-  publicPort: argv.publicPort || process.env.MUSERIA_PUBLIC_PORT,
-  hostname: argv.hostname || process.env.MUSERIA_HOSTNAME,
-  logger: {
+export const face = argv.face || process.env.MUSERIA_FACE;
+export const port = argv.port || process.env.MUSERIA_PORT;
+export const initialNetworkAddress = argv.initialNetworkAddress || process.env.MUSERIA_INITIAL_NETWORK_ADDRESS || faces;
+export const publicPort = argv.publicPort || process.env.MUSERIA_PUBLIC_PORT;
+export const hostname = argv.hostname || process.env.MUSERIA_HOSTNAME;
+export const logger = {
     transports: [
-      { transport: 'LoggerConsole', options: { level: loggerLevelConsole } },
-      { transport: 'LoggerFile', options: { level: loggerLevelFile } }
+        { transport: 'LoggerConsole', options: { level: loggerLevelConsole } },
+        { transport: 'LoggerFile', options: { level: loggerLevelFile } }
     ]
-  },
-  collections: {
+};
+export const collections = {
     music: {
-      limit: argv.collectionsMusicLimit || process.env.MUSERIA_COLLECTION_MUSIC_LIMIT
+        limit: argv.collectionsMusicLimit || process.env.MUSERIA_COLLECTION_MUSIC_LIMIT
     }
-  },
-  storage: {
+};
+export const storage = {
     path: argv.storagePath || process.env.MUSERIA_STORAGE_PATH,
     dataSize: argv.storageDataSize || process.env.MUSERIA_STORAGE_DATA_SIZE,
     tempSize: argv.storageTempSize || process.env.MUSERIA_STORAGE_TEMP_SIZE
-  },
-  server: {
-    https: { 
-      key: key,
-      cert: cert,
-      ca: ca,
-    }
-  }
-}
+};
+
+const pems = selfsigned.generate();
+export const server = {
+    https: true
+};
+export default {
+    face,
+    port,
+    initialNetworkAddress,
+    publicPort,
+    hostname,
+    logger,
+    collections,
+    storage,
+    server
+};
