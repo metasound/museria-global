@@ -4,6 +4,7 @@ import adapter from "spreadable-ms/src/logger/transports/adapter/index.js";
 const Node = node();
 const ServerExpressMuseriaGlobal = express();
 const LoggerAdapter = adapter();
+
 export default (Parent) => {
     return class NodeMuseriaGlobal extends (Parent || Node) {
         static get ServerTransport() { return ServerExpressMuseriaGlobal; }

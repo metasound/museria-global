@@ -1,7 +1,7 @@
 # [Museria global storage](https://github.com/metasound/museria-global/)  [alpha] [![npm version](https://badge.fury.io/js/museria-global.svg)](https://badge.fury.io/js/spreadable) [![alt text](https://img.shields.io/badge/Community-Chat-blueChat?style=flat-square&amp;logo=telegram)](https://t.me/museria)
 
 This is a network configuration of the global decentralized storage for storing and receiving all the music we have on the planet. 
-It is based on [museria](https://github.com/metasound/museria-ms/).
+It is based on [museria](https://github.com/metasound/museria/).
 
 ## Running on machine
 
@@ -22,13 +22,13 @@ docker-compose up
 You can also pass environment variables before the command.
 
 ## What are the requirements
-Look at [the museria requirements](https://github.com/metasound/museria-ms/#what-are-the-requirements).
+Look at [the museria requirements](https://github.com/metasound/museria/#what-are-the-requirements).
 
 ## What is the idea
 There is not a single place on the planet where people can get any song fast, without troubles and for free. There are many projects that have not been implemented because of this. We believe that music creators can receive money for their work in a different way than to make a commercial product out of it and limit access to it. How exactly, we are going to propose in another project, later (automatized donations, to be short). In the meantime, let's collect the music in one place and give everyone access to it!
 
 ## How it works
-At the very beginning, please check out [the museria library](https://github.com/metasound/museria-ms/).
+At the very beginning, please check out [the museria library](https://github.com/metasound/museria/).
 So, anyone can start their own node and share some place for music uploading. 
 The main network address is __storage.museria.com:80__. But you can use another entry point if it is necessary. Look at the configuration file __museria.config.js__. There are all parameters you may configure by passing arguments or environment variables. Don't change anything else.
 
@@ -41,7 +41,7 @@ If you don't want to provide the disk space you can run the node in face mode as
 For comfortable work it is enough to have only __10GB__ of free space. You can run it on any server that is open to external requests.
 
 ### 2. Add music to the storage
-You can do this either using [the library](https://github.com/metasound/museria-ms/) or simply go to the website of any node of the global network (for example, [storage.museria.com](http://storage.museria.com)) and upload the file through the convenient interface.
+You can do this either using [the library](https://github.com/metasound/museria/) or simply go to the website of any node of the global network (for example, [storage.museria.com](http://storage.museria.com)) and upload the file through the convenient interface.
 
 ### 3. Use it for yourself
 Find and store necessary music or create your own cool music projects like [that](https://github.com/metasound/museria-player/).
