@@ -37,7 +37,7 @@
     "fs-extra": "^11.2.0",
     "museria-ms": "latest",
     "selfsigned": "^2.4.1",
-    "spreadable-ms": "latest"
+    "storacle-ms": "latest"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
