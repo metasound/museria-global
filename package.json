@@ -1,7 +1,7 @@
 {
-  "name": "museria-global-ms",
-  "version": "0.3.45",
-  "description": "Global decentralized music storage for MetaSound",
+  "name": "museria-global",
+  "version": "0.3.5",
+  "description": "Global decentralized music storage",
   "main": "./src/index.js",
   "type": "module",
   "author": {
@@ -34,10 +34,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "fs-extra": "^11.2.0",
-    "museria-ms": "latest",
-    "selfsigned": "^2.4.1",
-    "storacle-ms": "latest"
+    "museria": "~0.3.5",
+    "spreadable": "~0.3.10"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
@@ -49,6 +47,6 @@
     "url": "https://github.com/metasound/museria-global"
   },
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=20.0.0"
   }
 }

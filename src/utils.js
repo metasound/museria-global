@@ -1,2 +1,2 @@
-import utils from "museria-ms/src/utils";
+import utils from "museria/src/utils.js";
 export default Object.assign({}, utils);

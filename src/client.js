@@ -1,6 +1,6 @@
-import client from "museria-ms/src/client";
+import client from 'museria/src/client.js';
 const Client = client();
+
 export default (Parent) => {
-    return class ClientMuseriaGlobal extends (Parent || Client) {
-    };
+  return class ClientMuseriaGlobal extends (Parent || Client) {}
 };

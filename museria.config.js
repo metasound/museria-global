@@ -1,24 +1,22 @@
-import yargs from 'yargs'
-import { hideBin } from 'yargs/helpers'
-import * as dotenv from "dotenv";
-import path from "path";
-import fse from "fs-extra";
-import selfsigned  from 'selfsigned';
-
-const argv = yargs(hideBin(process.argv)).argv;
-const faces = JSON.parse(fse.readFileSync(new URL("./faces.json", import.meta.url)));
+import yargs from 'yargs';
+import dotenv from 'dotenv';
+import path from 'path';
+import faces from "./faces.json" with { type: "json" };
 const __dirname = new URL('.', import.meta.url).pathname;
 dotenv.config({ path: path.join(__dirname, '.env') });
+const argv = yargs(process.argv).argv;
 const loggerLevel = argv.loggerLevel || process.env.MUSERIA_LOGGER_LEVEL;
 const split = loggerLevel.split(',');
 const loggerLevelConsole = split[0];
 const loggerLevelFile = split[1] || loggerLevelConsole;
-export const face = argv.face || process.env.MUSERIA_FACE;
-export const port = argv.port || process.env.MUSERIA_PORT;
-export const initialNetworkAddress = argv.initialNetworkAddress || process.env.MUSERIA_INITIAL_NETWORK_ADDRESS || faces;
-export const publicPort = argv.publicPort || process.env.MUSERIA_PUBLIC_PORT;
-export const hostname = argv.hostname || process.env.MUSERIA_HOSTNAME;
-export const logger = {
+
+export default {
+  face: argv.face || process.env.MUSERIA_FACE,
+  port: argv.port || process.env.MUSERIA_PORT,
+  initialNetworkAddress: argv.initialNetworkAddress || process.env.MUSERIA_INITIAL_NETWORK_ADDRESS || faces,
+  publicPort: argv.publicPort || process.env.MUSERIA_PUBLIC_PORT,
+  hostname: argv.hostname || process.env.MUSERIA_HOSTNAME,
+  logger: {
     transports: [
         { transport: 'LoggerConsole', options: { level: loggerLevelConsole } },
         { transport: 'LoggerFile', options: { level: loggerLevelFile } }
