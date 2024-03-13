@@ -18,33 +18,21 @@ export default {
   hostname: argv.hostname || process.env.MUSERIA_HOSTNAME,
   logger: {
     transports: [
-        { transport: 'LoggerConsole', options: { level: loggerLevelConsole } },
-        { transport: 'LoggerFile', options: { level: loggerLevelFile } }
+      { transport: 'LoggerConsole', options: { level: loggerLevelConsole } },
+      { transport: 'LoggerFile', options: { level: loggerLevelFile } }
     ]
-};
-export const collections = {
+  },
+  collections: {
     music: {
-        limit: argv.collectionsMusicLimit || process.env.MUSERIA_COLLECTION_MUSIC_LIMIT
+      limit: argv.collectionsMusicLimit || process.env.MUSERIA_COLLECTION_MUSIC_LIMIT
     }
-};
-export const storage = {
+  },
+  storage: {
     path: argv.storagePath || process.env.MUSERIA_STORAGE_PATH,
     dataSize: argv.storageDataSize || process.env.MUSERIA_STORAGE_DATA_SIZE,
     tempSize: argv.storageTempSize || process.env.MUSERIA_STORAGE_TEMP_SIZE
-};
-
-const pems = selfsigned.generate();
-export const server = {
-    https: true
-};
-export default {
-    face,
-    port,
-    initialNetworkAddress,
-    publicPort,
-    hostname,
-    logger,
-    collections,
-    storage,
-    server
-};
+  }, 
+  server: {
+    https: false
+  },
+}

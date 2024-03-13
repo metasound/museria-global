@@ -1,6 +1,6 @@
-import node from 'museria/src/node.js';
+import node from 'museria-ms/src/node.js';
 import serverExpressMuseriaGlobal from './server/transports/express/index.js';
-import loggerAdapter from 'spreadable/src/logger/transports/adapter/index.js';
+import loggerAdapter from 'spreadable-ms/src/logger/transports/adapter/index.js';
 
 const Node = node();
 const ServerExpressMuseriaGlobal = serverExpressMuseriaGlobal();

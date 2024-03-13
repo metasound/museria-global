@@ -1,4 +1,4 @@
-import serverExpressMuseria from 'museria/src/server/transports/express/index.js';
+import serverExpressMuseria from 'museria-ms/src/server/transports/express/index.js';
 
 const ServerExpressMuseria = serverExpressMuseria();
 

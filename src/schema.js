@@ -1,2 +1,2 @@
-import schema from "museria/src/schema.js";
+import schema from "museria-ms/src/schema.js";
 export default Object.assign({}, schema);
